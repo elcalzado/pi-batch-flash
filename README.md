@@ -2,7 +2,9 @@
 
 Batch-flash rpiboot-capable Raspberry Pi targets with the latest **Raspberry Pi OS Lite (64-bit)** and a per-unit cloud-init config. Each unit gets hostname `<host>-<N>` and a matching **passwordless, SSH-key-only** user `<user>-<N>`.
 
-Flashes run in the background, so you overlap up to 4 at once (one per USB port) while connecting modules one at a time.
+Flashes run in the background, so you overlap them while connecting modules one at a time.
+
+> **NOTE:** You will probably need to use a powered USB hub to flash more than one unit at a time. When tested on a RPi 4, both units would shut off if they were flashing simultaneously.
 
 ## How it works
 
@@ -90,7 +92,7 @@ sudo whoami  # -> root, no password prompt
 
 ## BOOT_ORDER
 
-If the Raspberry Pi you're provisioning doesn't have an nRPIBOOT jumper, modify, boot into it once, and modify its BOOT_ORDER through `sudo -E rpi-eeprom-config --edit'.
+If the Raspberry Pi you're provisioning doesn't have an nRPIBOOT jumper, modify, boot into it once, and modify its BOOT_ORDER through `sudo -E rpi-eeprom-config --edit`.
 
 See [boot-order-fields](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#boot_order-fields) to determine the correct configuration.
 
